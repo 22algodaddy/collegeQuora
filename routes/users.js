@@ -52,7 +52,7 @@ router.get("/:id",async(req, res)=>{
         res.status(200).json(other);
       }
       else {
-        res.status(404).json("No User Found!!");
+        res.status(403).json("No User Found!!");
       }
     }
     catch (err) {
@@ -61,7 +61,7 @@ router.get("/:id",async(req, res)=>{
 });
 //Follow A User
   router.put("/:id/follow",async(req,res)=>{
-    if(req.body.username!=req.params.id){
+    if(req.body.userId!=req.params.id){
       try{
         const to_be_followed_user = await User.findById(req.params.id);
         const currentUser =await User.findById(req.body.userId);
@@ -81,5 +81,25 @@ router.get("/:id",async(req, res)=>{
     }
   });
 //Unfollow A User
+router.put("/:id/unfollow",async(req,res)=>{
+  if(req.body.userId!=req.params.id){
+    try{
+      const to_be_unfollowed_user = await User.findById(req.params.id);
+      const currentUser =await User.findById(req.body.userId);
+      if(to_be_unfollowed_user.followers.includes(currentUser.username)){
+        await to_be_unfollowed_user.updateOne({$pull:{followers:currentUser.username}});
+        await currentUser.updateOne({$pull:{following:to_be_unfollowed_user.username}});
+        res.status(200).json(` ${to_be_unfollowed_user.username } has been unfollowed Successfully!!`);
+      }else{
+        res.status(403).json("You already unfollow this user");
+      }
+    }
+    catch(err){
+      res.status(500).json(err);
+    }
+  }else{
+    res.status(403).json("You can't unfollow yourself");
+  }
+});
 
 module.exports=router;
