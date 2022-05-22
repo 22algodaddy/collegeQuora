@@ -14,4 +14,20 @@ router.post("/",async (req,res)=>{
     res.status(500).json(err);
   }
 });
+//Update A Post
+router.put("/:id",async (req, res)=>{
+  try{
+      let outdatedPost = await Post.findById(req.params.id);
+      if(outdatedPost.userId===req.body.userId){
+        await outdatedPost.updateOne({$set:req.body});
+        res.status(200).json("Post Updated Succesfully");
+      }
+      else{
+          res.status(403).json("Access Forbidden,you can update your post only");
+      }
+  }
+  catch(err){
+    res.status(404).json("Something is wrong");
+  }
+});
 module.exports = router;
