@@ -47,4 +47,36 @@ router.delete("/:id",async (req, res)=>{
     res.status(404).json("Something is wrong");
   }
 });
+//Like&Dislike Post Module
+router.put("/:id/like",async (req, res)=>{
+  try{
+    const post= await Post.findById(req.params.id);
+    if(!post.likes.includes(req.body.userId)){
+      await post.updateOne({$push:{likes:req.body.userId}});
+      res.status(200).json("Post Liked Successfully!!");
+    }
+    else{
+      await post.updateOne({$pull:{likes:req.body.userId}});
+      res.status(200).json("Post disliked Successfully");
+    }
+  }
+  catch(err){
+    res.status(500).json(err);
+  }
+});
+//Get A Post
+router.get('/:id/like',async (req,res) => {
+  try{
+    const post = await Post.findById(req.params.id);
+    if(post!=null){
+      res.status(200).json(post);
+    }
+    else{
+      res.status(403).json("Post not found");
+    }
+  }
+  catch(err){
+    res.status(500).json(err);
+  }
+})
 module.exports = router;
