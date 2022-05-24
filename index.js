@@ -10,9 +10,11 @@ app.listen(3000,()=>{
 mongoose.connect(MONGO_URL,()=>{
 });
 const userRoute=require(__dirname+"/routes/users.js");
-const auth=require(__dirname+"/routes/auth.js")
+const auth=require(__dirname+"/routes/auth.js");
+const post=require(__dirname+"/routes/post.js");
 app.use("/user",userRoute);
 app.use("/auth",auth);
+app.use("/post",post);
 app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));

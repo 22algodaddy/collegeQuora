@@ -30,4 +30,21 @@ router.put("/:id",async (req, res)=>{
     res.status(404).json("Something is wrong");
   }
 });
+//Delete A Post
+
+router.delete("/:id",async (req, res)=>{
+  try{
+    let deletePost = await Post.findById(req.params.id);
+    if(deletePost.userId===req.body.userId){
+      await deletePost.deleteOne();
+      res.status(200).json("Post Deleted Succesfully");
+    }
+    else{
+      res.status(403).json("Access Forbidden,you can delete your post only");
+    }
+  }
+  catch(err){
+    res.status(404).json("Something is wrong");
+  }
+});
 module.exports = router;
