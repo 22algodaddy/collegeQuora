@@ -1,0 +1,48 @@
+/*.login{*/
+/*  width:100vw;*/
+/*  height:100vh;*/
+/*  background-color:navajowhite;*/
+/*  display:flex;*/
+/*  align-items: center;*/
+/*  justify-content: center;*/
+/*}*/
+/* .loginWrapper{*/
+/*   width:75%;*/
+/*   height:75%;*/
+/*   background-color:skyblue;*/
+/*   display:flex;*/
+/* }*/
+
+/* .loginLeft, .loginRight {*/
+/*   flex: 1; !*Dividing Whole screen into 2(flex number+1) halves*!*/
+/*   display:flex;*/
+/*   flex-direction: column;*/
+/*   justify-content: center;*/
+/* }*/
+
+/* .loginLogo{*/
+/*   font-size:50px;*/
+/*   font-weight:bold;*/
+/*   color:yellowgreen;*/
+/*   margin-bottom: 10px;*/
+/* }*/
+
+/* .loginDesc{*/
+/*   font-style: italic;*/
+/*   font-size:24px;*/
+/* }*/
+
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+.socialMediaLogin{
+  width:100%;
+  background-color: red;
+  display:inline-block;
+  margin-right:2px ;
+
+}

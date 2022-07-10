@@ -1,0 +1,14 @@
+.sidebarFriend{
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.sidebarfriendprofilePhoto{
+  width:32px;
+  height:35px;
+  border-radius:50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
