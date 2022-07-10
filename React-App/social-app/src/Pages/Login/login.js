@@ -2,21 +2,6 @@ import "./login.css"
 // import "/node_modules/bootstrap/dist/css/bootstrap.min.css"
 export default function Login(){
   return(
-    // <div className="login">
-    //   <div className="loginWrapper">
-    //     <div className="loginLeft">
-    //       <h3 className="loginLogo">TappApp</h3>
-    //       <span className="loginDesc">Connect With your Alma-Mater</span>
-    //     </div>
-    //     <div className="loginRight">
-    //       <div className="loginBox">
-    //
-    //       </div>
-    //     </div>
-    //
-    //   </div>
-    //
-    // </div>
 
     <section className="vh-100" style={{backgroundColor: "#9A616D;"}}>
       <div className="container py-5 h-100">
